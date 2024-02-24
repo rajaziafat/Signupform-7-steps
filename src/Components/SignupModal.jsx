@@ -52,7 +52,7 @@ const SignupModal = ({ onClose }) => {
             </button>
             <button
               onClick={nextStep}
-              className="bg-[#3772ff] hover:bg-[#5e3894] duration-300 text-white font-bold py-2 px-4 rounded inline-flex items-center mr-2"
+              className="bg-[#333] hover:bg-[#444]  border border-white duration-300 text-white font-bold py-2 px-4 rounded inline-flex items-center mr-2"
             >
               Continue
             </button>
