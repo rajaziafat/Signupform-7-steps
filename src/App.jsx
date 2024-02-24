@@ -1,7 +1,7 @@
 // App.js
 import React, { useState } from 'react';
 import SignupModal from './Components/SignupModal';
-
+import './App.css'
 
 function App() {
   const [showSignupModal, setShowSignupModal] = useState(false);
