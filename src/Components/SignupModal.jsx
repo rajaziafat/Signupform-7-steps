@@ -46,7 +46,7 @@ const SignupModal = ({ onClose }) => {
           <div className="flex justify-center space-x-4 0 mt-10">
             <button
               onClick={onClose}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 duration-300 font-bold py-2 px-4 rounded inline-flex items-center"
+              className="bg-[#333] hover:bg-[#444]  border border-white duration-300 text-white font-bold py-2 px-4 rounded inline-flex items-center"
             >
               Cancel
             </button>
