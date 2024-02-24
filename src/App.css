@@ -2,19 +2,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1); /* Invert the color of the icon to white */
   }
 
-
-  /* Custom CSS */
-/* Custom CSS */
-
-
-option {
-  background-color: #333 !important; /* Change this to your desired color */
-}
-
-option:hover {
-  background-color: #8338ec !important; /* Change this to your desired color on hover */
-}
-
-option:checked {
-  background-color: #8338ec !important; /* Change this to your desired color when selected */
+:root{
+  background: linear-gradient(to right, #000000, #434343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
 }

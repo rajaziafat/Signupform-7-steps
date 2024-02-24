@@ -35,8 +35,8 @@ const SignupModal = ({ onClose }) => {
 
 
   return (
-    <div className="absolute py-8 top-0 left-0 w-full flex items-center justify-center bg-gray-800 bg-opacity-50 px-4  overflow-x-auto overflow-y-auto">
-      <div className=" backdrop-blur-lg bg-[#333] bg-opacity-60  w-[1150px]   p-8 rounded shadow-lg px-4 ">
+    <div className="absolute py-4 mt-8 top-0 left-0 w-full flex items-center justify-center bg-transparent bg-opacity-80 px-4  ">
+      <div className=" backdrop-blur-lg bg-[#333] bg-opacity-20 border border-gray-400  w-[1150px]   p-8 rounded shadow-lg px-4 ">
         <div className='flex justify-center text-white border-b-2 '>
           <h2 className="text-2xl font-bold mb-4"> Welcome Step {step}/{totalSteps}</h2>
 
@@ -52,7 +52,7 @@ const SignupModal = ({ onClose }) => {
             </button>
             <button
               onClick={nextStep}
-              className="bg-[#8338ec] hover:bg-[#5e3894] duration-300 text-white font-bold py-2 px-4 rounded inline-flex items-center mr-2"
+              className="bg-[#3772ff] hover:bg-[#5e3894] duration-300 text-white font-bold py-2 px-4 rounded inline-flex items-center mr-2"
             >
               Continue
             </button>
@@ -99,10 +99,10 @@ const division = [
 ];
 
 const city = [
-  { value: '', label: '1' },
-  { value: '', label: '2' },
-  { value: '', label: '3' },
-  { value: '', label: '4' },
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '3', label: '3' },
+  { value: '4', label: '4' },
 
 
 ];
@@ -180,19 +180,25 @@ const StepOne = ({ nextStep }) => {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: '#333',
-      borderColor: state.isFocused ? '#8338ec' : '#333', // Adjust border color on focus
-      padding: '6px',
-      borderRadius: '7px',
+      backgroundColor: 'transparent', // Set background transparent
+      borderBottom: '2px solid #fff', // Initially set border bottom transparent
+      borderColor: 'transparent', // Set other borders transparent
+      paddingRight: '2px', // Add padding-right
+      borderRadius: '0px', // Remove border radius
       '&:hover': {
-        borderColor: '#8338ec', // Adjust border color on hover
+        borderBottomColor: '#fff', // Adjust border bottom color on hover
+      },
+      '&:focus-within': {
+        borderBottomColor: 'transparent', // Remove focus border color
       },
     }),
+    
+    
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isSelected ? '#8338ec' : '#333', // Adjust background color when selected
+      backgroundColor: state.isSelected ? '#3772ff' : '#333',
       '&:hover': {
-        backgroundColor: '#8338ec', // Adjust background color on hover
+        backgroundColor: 'rgba(18, 53, 255, 0.24)', // Light purple with opacity
       },
     }),
     singleValue: (provided, state) => ({
@@ -223,7 +229,8 @@ const StepOne = ({ nextStep }) => {
             defaultValue={selectedOption}
             onChange={setSelectedOption}
             options={languages}
-            styles={customStyles} // Apply custom styles here
+            styles={customStyles} 
+            placeholder="" 
           />
 
 
@@ -237,8 +244,7 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="email"
-            placeholder="Enter your email"
-            className="w-full bg-[#333] text-white   rounded-md py-3 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
             required
           />
         </div>
@@ -249,8 +255,7 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="text"
-            placeholder="Stage name"
-            className="w-full bg-[#333] text-white   rounded-md py-3 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
             required
           />
         </div>
@@ -261,8 +266,7 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="text"
-            placeholder="First name"
-            className="w-full bg-[#333] text-white   rounded-md py-3 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
             required
           />
         </div>
@@ -273,8 +277,7 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="text"
-            placeholder="Last namel"
-            className="w-full bg-[#333] text-white   rounded-md py-3 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
           />
         </div>
 
@@ -283,8 +286,7 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="date"
-            placeholder="Enter your email"
-            className="w-full bg-[#333] text-white rounded-md py-3 px-4 focus:outline-none focus:border-white"
+            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
             style={{ color: 'white' }} // Set text color to white
           />
 
@@ -306,16 +308,10 @@ const StepOne = ({ nextStep }) => {
             defaultValue={selectedOption}
             onChange={setSelectedOption}
             options={gender}
-            styles={customStyles} // Apply custom styles here
+            styles={customStyles} 
+            placeholder="" // Apply custom styles here
           />
-          {/* Style the select arrow */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 mt-6 text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-
-
-          </div>
+        
         </div>
 
 
@@ -324,8 +320,7 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="text"
-            placeholder="Enter Copun Code"
-            className="w-full bg-[#333] text-white   rounded-md py-3 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
           />
         </div>
 
@@ -348,7 +343,7 @@ const StepOne = ({ nextStep }) => {
                     <img
                       src={image || 'https://media.istockphoto.com/id/1341046662/vector/picture-profile-icon-human-or-people-sign-and-symbol-for-template-design.jpg?s=612x612&w=0&k=20&c=A7z3OK0fElK3tFntKObma-3a7PyO8_2xxW0jtmjzT78='}
                       alt="Large avatar"
-                      className="w-20 h-20 border-2 border-[#8338ec] rounded-full object-cover"
+                      className="w-20 h-20 border-2 border-[#3772ff] rounded-full object-cover"
                     />
                     <div className="absolute bottom-0 right-0">
                       <input
@@ -376,16 +371,11 @@ const StepOne = ({ nextStep }) => {
               defaultValue={selectedOption}
               onChange={setSelectedOption}
               options={division}
-              styles={customStyles} // Apply custom styles here
+              styles={customStyles} 
+              placeholder="" // Apply custom styles here
             />
 
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 mt-6 text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-              </svg>
-
-
-            </div>
+          
           </div>
 
           <div className='relative py-1 px-2'>
@@ -397,12 +387,9 @@ const StepOne = ({ nextStep }) => {
               value={selectedCountry}
               onChange={handleCountryChange}
               styles={customStyles}
+              placeholder="" 
             />
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 mt-6 text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-              </svg>
-            </div>
+         
           </div>
 
           <div className='relative py-2 px-2'>
@@ -412,12 +399,9 @@ const StepOne = ({ nextStep }) => {
               className="w-full"
               options={city}
               styles={customStyles}
+              placeholder="" 
             />
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 mt-6 text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-              </svg>
-            </div>
+           
           </div>
 
 
@@ -427,7 +411,7 @@ const StepOne = ({ nextStep }) => {
                 id="remember"
                 type="checkbox"
                 defaultValue=""
-                className={`w-4 h-4 border  accent-[#8338ec]  `}
+                className={`w-4 h-4 border  accent-[#3772ff]  `}
                 required=""
                 onClick={handleCheckboxChange}
               />
@@ -440,16 +424,16 @@ const StepOne = ({ nextStep }) => {
             </label>
             <div className='ms-2 text-md font-medium  text-white '>
               I accept the{" "}
-              <span className="text-[#8338ec] hover:underline cursor-pointer">MaroozeTerms</span> and{" "}
-              <span className="text-[#8338ec] cursor-pointer hover:underline">
+              <span className="text-[#3772ff] hover:underline cursor-pointer">MaroozeTerms</span> and{" "}
+              <span className="text-[#3772ff] cursor-pointer hover:underline">
                 Conditions
               </span>
               ,{" "}
-              <span className="text-[#8338ec] cursor-pointer hover:underline">
+              <span className="text-[#3772ff] cursor-pointer hover:underline">
                 GDPR
               </span>{" "}
               ,{" "}
-              <span className="text-[#8338ec] cursor-pointer hover:underline">
+              <span className="text-[#3772ff] cursor-pointer hover:underline">
                 Netiquette
               </span>
             </div>
