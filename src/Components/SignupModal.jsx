@@ -36,7 +36,7 @@ const SignupModal = ({ onClose }) => {
 
   return (
     <div className="absolute py-4 mt-8 top-0 left-0 w-full flex items-center justify-center bg-transparent bg-opacity-80 px-4  ">
-      <div className=" backdrop-blur-lg bg-[#333] bg-opacity-20 border border-gray-400  w-[1150px]   p-8 rounded shadow-lg px-4 ">
+<div className="backdrop-blur-lg bg-white bg-opacity-5 border-gray-600 w-[1150px] p-8 rounded shadow-lg px-4">
         <div className='flex justify-center text-white border-b-2 '>
           <h2 className="text-2xl font-bold mb-4"> Welcome Step {step}/{totalSteps}</h2>
 
