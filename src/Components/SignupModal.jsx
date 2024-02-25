@@ -328,25 +328,26 @@ const StepOne = ({ nextStep }) => {
             placeholder='Doe'
           />
         </div>
-        <div className='py-2 px-2 relative mt-2 '>
-          <label className="block text-sm  text-white absolute top-1 z-2 -mt-2 ml-2"> Birthday</label>
+        <div className='py-2 px-2 relative mt-2'>
+  <label className="block text-sm text-white absolute top-1 z-10 -mt-2 ml-2"> Birthday</label>
 
-          <input
-            type="date"
-            className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white    py-2 px-4  focus:outline-none "
-            style={{ color: 'white' }} // Set text color to white
-          />
+  <input
+    type="date"
+    className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white py-2 px-4 focus:outline-none"
+    style={{ color: 'white', WebkitTextFillColor: 'white' }} // Set text color to white for iOS
+  />
 
-          {/* Style the date picker icon */}
-          <style>
-            {`
-          /* Target the date picker icon */
-          input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1); // Invert the color of the icon to white
-          }
-        `}
-          </style>
-        </div>
+  {/* Style the date picker icon */}
+  <style>
+    {`
+      /* Target the date picker icon */
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1); // Invert the color of the icon to white
+      }
+    `}
+  </style>
+</div>
+
 
 
         <div className='relative py-2 px-2 mt-2'>
