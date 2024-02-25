@@ -333,40 +333,37 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="date"
-             value="2024-02-02"
             className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white py-2 px-4 focus:outline-none"
-            style={{ color: 'white', WebkitTextFillColor: 'white', width: '100%', height: '45px' }} // Set text color to white for iOS and adjust width and height
+            style={{ color: 'white', width: '100%', height: '45px', WebkitAppearance: 'none' }} // Adjust width and height, and remove default appearance for iOS
             placeholder="Select Date" // Placeholder text for iOS
           />
 
           <style>
             {`
-      /* Target the date picker icon */
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(1); // Invert the color of the icon to white
+      /* Set placeholder color */
+      ::-webkit-input-placeholder {
+        color: white;
       }
 
-      /* Set placeholder color */
-      ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-        color: white;
+      /* Style the date picker */
+      input[type="date"] {
+        -webkit-appearance: none; /* Remove default arrow button in Safari */
+        appearance: none;
+        padding: 10px; /* Adjust padding for better appearance */
+        background-color: #3c3c3c; /* Set background color */
+        border: 2px solid #555; /* Set border */
+        border-radius: 5px; /* Set border radius */
+        color: white; /* Set text color */
       }
-      :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-        color: white;
-        opacity: 1;
-      }
-      ::-moz-placeholder { /* Mozilla Firefox 19+ */
-        color: white;
-        opacity: 1;
-      }
-      :-ms-input-placeholder { /* Internet Explorer 10-11 */
-        color: white;
-      }
-      ::placeholder { /* Most modern browsers */
-        color: white;
+
+      /* Style the date picker icon */
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1); /* Invert the color of the icon to white */
       }
     `}
           </style>
         </div>
+
 
 
 
