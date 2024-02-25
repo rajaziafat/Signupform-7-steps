@@ -34,25 +34,44 @@ const SignupModal = ({ onClose }) => {
   };
 
 
+  const getStepName = (stepNumber) => {
+    switch (stepNumber) {
+      case 1:
+        return "Signup";
+      case 2:
+        return "Step Two";
+      // Add names for other steps as needed
+      default:
+        return "Unknown Step";
+    }
+  };
+
+
+
+
   return (
     <div className="absolute py-4 mt-8 top-0 left-0 w-full flex items-center justify-center bg-transparent bg-opacity-80 px-4  ">
-<div className="backdrop-blur-lg bg-white bg-opacity-5 border-gray-600 w-[1150px] p-8 rounded shadow-lg px-4">
-        <div className='flex justify-center text-white border-b-2 '>
-          <h2 className="text-2xl font-bold mb-4"> Welcome Step {step}/{totalSteps}</h2>
+      <div className="bg-[#2d2d2d]  border-gray-600 w-[900px] p-4 rounded-xl shadow-lg px-4">
+        <div className='flex justify-end'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-gray-400 cursor-pointer" onClick={onClose}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+
+        </div>
+        <div className='flex justify-center text-white  '>
+          <h2 className="text-2xl font-bold mb-4">
+            {getStepName(step)}  {step}/{totalSteps}
+          </h2>
 
         </div>
         {renderStep()}
         {step !== totalSteps ? (
           <div className="flex justify-center space-x-4 0 mt-10">
-            <button
-              onClick={onClose}
-              className="bg-[#333] hover:bg-[#444]  border border-white duration-300 text-white font-bold py-2 px-4 rounded inline-flex items-center"
-            >
-              Cancel
-            </button>
+
             <button
               onClick={nextStep}
-              className="bg-[#333] hover:bg-[#444]  border border-white duration-300 text-white font-bold py-2 px-4 rounded inline-flex items-center mr-2"
+              className="bg-[#21c55e] hover:bg-[#388153]   duration-300 text-white font-bold py-2 px-6 rounded inline-flex items-center mr-2"
             >
               Continue
             </button>
@@ -180,25 +199,18 @@ const StepOne = ({ nextStep }) => {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: 'transparent', // Set background transparent
-      borderBottom: '2px solid #fff', // Initially set border bottom transparent
-      borderColor: 'transparent', // Set other borders transparent
-      paddingRight: '2px', // Add padding-right
-      borderRadius: '0px', // Remove border radius
-      '&:hover': {
-        borderBottomColor: '#fff', // Adjust border bottom color on hover
-      },
-      '&:focus-within': {
-        borderBottomColor: 'transparent', // Remove focus border color
-      },
+      backgroundColor: '#3c3c3c',
+      border: '2px solid #555',
+      borderColor: state.isFocused ? '#555' : '#555',
+      borderRadius: '5px',
+      padding: '2px',
+      boxShadow: state.isFocused ? '0 0 0 1px #555' : 'none', 
     }),
-    
-    
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isSelected ? '#3772ff' : '#333',
+      backgroundColor: state.isSelected ? '#21c55e' : '#333',
       '&:hover': {
-        backgroundColor: 'rgba(18, 53, 255, 0.24)', // Light purple with opacity
+        backgroundColor: 'RGBA(33,171,83,0.5)', // Light purple with opacity
       },
     }),
     singleValue: (provided, state) => ({
@@ -207,15 +219,19 @@ const StepOne = ({ nextStep }) => {
     }),
     input: (provided, state) => ({
       ...provided,
-      color: '#fff', // Adjust input text color to white
+      color: '#fff',
+      '&::placeholder': {
+        color: '#fff !important', // Adjust placeholder color here
+      },
     }),
     menu: (provided, state) => ({
       ...provided,
       backgroundColor: '#333',
-      color: '#fff' // Adjust dropdown menu background color
+      color: '#fff', // Adjust dropdown menu background color
+      zIndex: 9999, // Set the z-index value as needed
     }),
   };
-
+  
 
   return (
     <div className='grid grid-cols-12 gap-4 mt-5 '>
@@ -223,70 +239,75 @@ const StepOne = ({ nextStep }) => {
 
 
         <div className='relative py-2 px-2'>
-          <label htmlFor="language" className="block text-md font-medium text-white">Select Language:</label>
-
+          <label htmlFor="language" className="block text-sm  text-white absolute top-1  z-10 -mt-2 ml-2">Select Language:</label>
           <Select
-            defaultValue={selectedOption}
             onChange={setSelectedOption}
-            options={languages}
-            styles={customStyles} 
-            placeholder="" 
+             defaultValue={selectedOption}
+           options={languages}
+            styles={customStyles}
+            placeholder='Select Language'
+            className=''
           />
-
-
         </div>
 
 
 
 
-        <div className='py-1 px-2'>
-          <label htmlFor="language" className="block text-md font-medium text-white">Email</label>
+
+        <div className='py-2 px-2 relative mt-2 '>
+          <label className="block text-sm  text-white absolute top-1 z-2 -mt-2 ml-2">E-Mail</label>
 
           <input
-            type="email"
-            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
-            required
-          />
+  type="email"
+  className="w-full bg-[#3c3c3c] hover:border-gray-300 rounded-md border-2 border-[#555] text-white py-2 px-4 focus:outline-none placeholder-white" // Add placeholder color here
+  required
+  placeholder='jane.doe@live.com'
+/>
+
         </div>
 
 
-        <div className='py-1 px-2'>
-          <label htmlFor="language" className="block text-md font-medium text-white">Stage name</label>
-
-          <input
-            type="text"
-            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
-            required
-          />
-        </div>
-
-
-        <div className='py-1 px-2'>
-          <label htmlFor="language" className="block text-md font-medium text-white">First name</label>
+        <div className='py-2 px-2 relative mt-2 '>
+          <label className="block text-sm  text-white absolute top-1 z-2 -mt-2 ml-2">Stage Name</label>
 
           <input
             type="text"
-            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white    py-2 px-4  focus:outline-none "
             required
+            placeholder='Stage Name'
           />
         </div>
 
 
-        <div className='py-1 px-2'>
-          <label htmlFor="language" className="block text-md font-medium text-white">Last name</label>
+
+        <div className='py-2 px-2 relative mt-2 '>
+          <label className="block text-sm  text-white absolute top-1 z-2 -mt-2 ml-2">First Name</label>
 
           <input
             type="text"
-            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white    py-2 px-4  focus:outline-none "
+            required
+            placeholder='Jane'
           />
         </div>
 
-        <div className='py-1 px-2'>
-          <label htmlFor="language" className="block text-md font-medium text-white">Birthday</label>
+
+        <div className='py-2 px-2 relative mt-2 '>
+          <label className="block text-sm  text-white absolute top-1 z-2 -mt-2 ml-2">Last Name</label>
+
+          <input
+            type="text"
+            className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white    py-2 px-4  focus:outline-none "
+            required
+            placeholder='Doe'
+          />
+        </div>
+        <div className='py-2 px-2 relative mt-2 '>
+          <label className="block text-sm  text-white absolute top-1 z-2 -mt-2 ml-2"> Birthday</label>
 
           <input
             type="date"
-            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
+            className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white    py-2 px-4  focus:outline-none "
             style={{ color: 'white' }} // Set text color to white
           />
 
@@ -302,27 +323,20 @@ const StepOne = ({ nextStep }) => {
         </div>
 
 
-        <div className='py-1 px-2 relative'>
-          <label htmlFor="gender" className="block text-md font-medium text-white">Gender</label>
+        <div className='relative py-2 px-2 mt-2'>
+          <label htmlFor="language" className="block text-sm  text-white absolute top-1  z-10 -mt-2 ml-2">Gender</label>
+
           <Select
             defaultValue={selectedOption}
             onChange={setSelectedOption}
             options={gender}
-            styles={customStyles} 
-            placeholder="" // Apply custom styles here
+            styles={customStyles}
+            placeholder="Gender" // Apply custom styles here
           />
-        
+
         </div>
 
 
-        <div className='py-1 px-2'>
-          <label htmlFor="language" className="block text-md font-medium text-white">Do you have a coupon code?</label>
-
-          <input
-            type="text"
-            className="w-full bg-transparent border-b-2 text-white    py-2 px-4  focus:outline-none focus:border-white"
-          />
-        </div>
 
 
 
@@ -341,9 +355,9 @@ const StepOne = ({ nextStep }) => {
                 <label htmlFor="image-upload" className="cursor-pointer">
                   <div className="relative">
                     <img
-                      src={image || 'https://media.istockphoto.com/id/1341046662/vector/picture-profile-icon-human-or-people-sign-and-symbol-for-template-design.jpg?s=612x612&w=0&k=20&c=A7z3OK0fElK3tFntKObma-3a7PyO8_2xxW0jtmjzT78='}
+                      src={image || 'https://i.pinimg.com/736x/8b/11/a8/8b11a86980c64720a41ec22332a83115.jpg'}
                       alt="Large avatar"
-                      className="w-20 h-20 border-2 border-[#3772ff] rounded-full object-cover"
+                      className="w-20 h-20  rounded-full object-cover"
                     />
                     <div className="absolute bottom-0 right-0">
                       <input
@@ -363,23 +377,24 @@ const StepOne = ({ nextStep }) => {
 
           </div>
 
-          <div className=' relative py-2 px-2'>
-            <label htmlFor="language" className="block text-md font-medium text-white">Division</label>
-
+          <div className='relative py-2 px-2 mt-2'>
+            <label htmlFor="language" className="block text-sm  text-white absolute top-1  z-10 -mt-2 ml-2">Division</label>
 
             <Select
               defaultValue={selectedOption}
               onChange={setSelectedOption}
               options={division}
-              styles={customStyles} 
-              placeholder="" // Apply custom styles here
+              styles={customStyles}
+              placeholder="Choose Your Division" // Apply custom styles here
             />
 
-          
+
           </div>
 
-          <div className='relative py-1 px-2'>
-            <label htmlFor="country" className="block text-md font-medium text-white">Country</label>
+          <div className='relative py-2 px-2 mt-2'>
+            <label htmlFor="language" className="block text-sm  text-white absolute top-1  z-10 -mt-2 ml-2">Country</label>
+
+
             <Select
               id="country"
               className="w-full"
@@ -387,55 +402,60 @@ const StepOne = ({ nextStep }) => {
               value={selectedCountry}
               onChange={handleCountryChange}
               styles={customStyles}
-              placeholder="" 
+              placeholder="Choose Your Country"
             />
-         
+
           </div>
 
-          <div className='relative py-2 px-2'>
-            <label htmlFor="city" className="block text-md font-medium text-white">City</label>
+          <div className='relative py-2 px-2 mt-2'>
+            <label htmlFor="language" className="block text-sm  text-white absolute top-1  z-10 -mt-2 ml-2">City</label>
+
             <Select
               id="city"
               className="w-full"
               options={city}
               styles={customStyles}
-              placeholder="" 
+              placeholder="Choose Your City"
             />
-           
+
+          </div>
+
+          <div className='py-2 px-2 relative mt-2 '>
+            <label className="block text-sm  text-white absolute top-1 z-2 -mt-2 ml-2"> Copun Code</label>
+
+            <input
+              type="text"
+              className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white    py-2 px-4  focus:outline-none "
+              placeholder=' i.e. IEDA4DLD'
+            />
           </div>
 
 
-          <div className="flex items-start mb-5 py-1 px-2">
+
+          <div className="flex items-center mb-5 py-1 px-2">
             <div className="flex items-center h-5">
               <input
                 id="remember"
                 type="checkbox"
                 defaultValue=""
-                className={`w-4 h-4 border  accent-[#3772ff]  `}
+                className={`w-4 h-4 border  accent-[#21c55e]  `}
                 required=""
                 onClick={handleCheckboxChange}
               />
             </div>
             <label
 
-              className="ms-2 text-md font-medium  text-white cursor-pointer"
+              className="ms-2 text-sm font-medium  text-white cursor-pointer"
               onClick={handleCheckboxChange}
             >
             </label>
-            <div className='ms-2 text-md font-medium  text-white '>
-              I accept the{" "}
-              <span className="text-[#3772ff] hover:underline cursor-pointer">MaroozeTerms</span> and{" "}
-              <span className="text-[#3772ff] cursor-pointer hover:underline">
-                Conditions
-              </span>
-              ,{" "}
-              <span className="text-[#3772ff] cursor-pointer hover:underline">
-                GDPR
-              </span>{" "}
-              ,{" "}
-              <span className="text-[#3772ff] cursor-pointer hover:underline">
-                Netiquette
-              </span>
+            <div className='ms-2 text-md  text-white '>
+            I accept the 
+            <span className='underline ms-2'> 
+               MaroozeTerms and
+              Conditions ,</span>
+              <span className='underline'>GDPR, </span>
+              <span className='underline'>Netiquette</span>
             </div>
 
           </div>
