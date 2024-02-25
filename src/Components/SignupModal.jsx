@@ -329,25 +329,43 @@ const StepOne = ({ nextStep }) => {
           />
         </div>
         <div className='py-2 px-2 relative mt-2'>
-  <label className="block text-sm text-white absolute top-1 z-10 -mt-2 ml-2"> Birthday</label>
+          <label className="block text-sm text-white absolute top-1 z-10 -mt-2 ml-2"> Birthday</label>
 
-  <input
-    type="date"
-    className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white py-2 px-4 focus:outline-none"
-    style={{ color: 'white', WebkitTextFillColor: 'white', width: '100%', height: '40px' }} // Set text color to white for iOS and adjust width and height
-    placeholder="Select Date" // Placeholder text for iOS
-  />
+          <input
+            type="date"
+            className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white py-2 px-4 focus:outline-none"
+            style={{ color: 'white', WebkitTextFillColor: 'white', width: '100%', height: '45px' }} // Set text color to white for iOS and adjust width and height
+            placeholder="Select Date" // Placeholder text for iOS
+          />
 
-  {/* Style the date picker icon */}
-  <style>
-    {`
+          <style>
+            {`
       /* Target the date picker icon */
       input[type="date"]::-webkit-calendar-picker-indicator {
         filter: invert(1); // Invert the color of the icon to white
       }
+
+      /* Set placeholder color */
+      ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: white;
+      }
+      :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: white;
+        opacity: 1;
+      }
+      ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: white;
+        opacity: 1;
+      }
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: white;
+      }
+      ::placeholder { /* Most modern browsers */
+        color: white;
+      }
     `}
-  </style>
-</div>
+          </style>
+        </div>
 
 
 
