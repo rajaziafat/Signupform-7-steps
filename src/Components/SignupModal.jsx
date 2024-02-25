@@ -333,6 +333,8 @@ const StepOne = ({ nextStep }) => {
 
           <input
             type="date"
+            value="2024-02-02"
+
             className="w-full bg-[#3c3c3c] placeholder-white hover:border-gray-300 rounded-md border-2 border-[#555] text-white py-2 px-4 focus:outline-none"
             style={{ color: 'white', width: '100%', height: '45px', WebkitAppearance: 'none' }} // Adjust width and height, and remove default appearance for iOS
             placeholder="Select Date" // Placeholder text for iOS
