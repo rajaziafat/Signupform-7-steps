@@ -69,54 +69,55 @@ const SignupModal = ({ onClose }) => {
   };
 
   return (
-    <div className="absolute top-96 md:top-0 bottom-0 left-0 w-full flex items-center justify-center bg-transparent bg-opacity-80 px-4">
-      <div className="bg-[#2d2d2d] border-gray-600 w-[900px] min-h-[700px] p-4 rounded-xl shadow-lg flex flex-col">
-        <div className="flex justify-end">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6 text-gray-400 cursor-pointer"
-            onClick={onClose}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
-        </div>
-        <div className="flex justify-center text-white">
-          <h2 className="text-2xl  mb-4">
-            {getStepName(step)} {step}/{totalSteps}
-          </h2>
-        </div>
-        {renderStep()}
-        <div className="flex justify-center mt-auto">
-          {step !== 1 && (
-            <button
-              onClick={prevStep}
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded inline-flex items-center mr-2"
-            >
-              Back
-            </button>
-          )}
-          {step !== totalSteps ? (
-            <button
-              onClick={nextStep}
-              className="bg-[#21c55e] hover:bg-[#388153] hover:duration-300 text-white font-bold py-2 px-6 rounded inline-flex items-center"
-            >
-              Continue
-            </button>
-          ) : (
-            <button
-              onClick={handleSubmit}
-              className="bg-[#21c55e] hover:bg-[#388153] text-white font-bold py-2 px-4 rounded inline-flex items-center"
-            >
-              Finish
-            </button>
-          )}
-        </div>
-      </div>
+<div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-transparent bg-opacity-80 px-4">
+  <div className="bg-[#2d2d2d] border-gray-600 w-full max-w-[900px] h-[800px] md:h-[700px] p-4 rounded-xl shadow-lg flex flex-col overflow-x-auto">
+    <div className="flex justify-end">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={2}
+        stroke="currentColor"
+        className="w-6 h-6 text-gray-400 cursor-pointer"
+        onClick={onClose}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
     </div>
+    <div className="flex justify-center text-white">
+      <h2 className="text-2xl mb-4">
+        {getStepName(step)} {step}/{totalSteps}
+      </h2>
+    </div>
+    {renderStep()}
+    <div className="flex justify-center mt-auto">
+      {step !== 1 && (
+        <button
+          onClick={prevStep}
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded inline-flex items-center mr-2"
+        >
+          Back
+        </button>
+      )}
+      {step !== totalSteps ? (
+        <button
+          onClick={nextStep}
+          className="bg-[#21c55e] hover:bg-[#388153] hover:duration-300 text-white font-bold py-2 px-6 rounded inline-flex items-center"
+        >
+          Continue
+        </button>
+      ) : (
+        <button
+          onClick={handleSubmit}
+          className="bg-[#21c55e] hover:bg-[#388153] text-white font-bold py-2 px-4 rounded inline-flex items-center"
+        >
+          Finish
+        </button>
+      )}
+    </div>
+  </div>
+</div>
+
 
   );
 };
