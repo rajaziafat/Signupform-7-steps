@@ -69,7 +69,7 @@ const SignupModal = ({ onClose }) => {
   };
 
   return (
-    <div className="absolute top-72 md:top-0 bottom-0 left-0 w-full flex items-center justify-center bg-transparent bg-opacity-80 px-4">
+    <div className="absolute top-96 md:top-0 bottom-0 left-0 w-full flex items-center justify-center bg-transparent bg-opacity-80 px-4">
       <div className="bg-[#2d2d2d] border-gray-600 w-[900px] min-h-[700px] p-4 rounded-xl shadow-lg flex flex-col">
         <div className="flex justify-end">
           <svg
