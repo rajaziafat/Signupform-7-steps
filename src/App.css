@@ -48,5 +48,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .css-tj5bde-Svg{
-  color: #fff !important;
+  color: #ffffff !important;
+  font-size: 1px;
+  
+}
+
+.css-1ubvmxz-control:hover{
+  border: 2px solid #555 !important;
 }
