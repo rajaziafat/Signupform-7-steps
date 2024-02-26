@@ -225,7 +225,7 @@ const StepOne = ({ nextStep }) => {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: '#3c3c3c',
+      backgroundColor: 'transparent',
       border: '2px solid #555',
       borderColor: state.isFocused ? '#555' : '#555',
       borderRadius: '5px',
@@ -265,7 +265,7 @@ const StepOne = ({ nextStep }) => {
 
 
         <div className='relative py-2 px-2'>
-          <label htmlFor="language" className="block text-sm  text-white absolute top-1  z-10 -mt-2 ml-2">Select Language:</label>
+          <label htmlFor="language" className="block text-sm text-white absolute top-1 z-10 -mt-2 ml-2 bg-[#2d2d2d] px-1">Select Language:</label>
           <Select
             onChange={setSelectedOption}
             defaultValue={selectedOption}
@@ -275,6 +275,7 @@ const StepOne = ({ nextStep }) => {
             className=''
           />
         </div>
+
 
 
 
