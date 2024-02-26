@@ -7,6 +7,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-position: center;
   background-size: cover;
   height: 100vh;
+  font-weight: 100;
 }
 
 .bgg{

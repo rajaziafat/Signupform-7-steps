@@ -667,7 +667,7 @@ const StepFour = ({ nextStep }) => {
 
   return (
     <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-12 md:col-span-6 space-y-6 md:max-w-[360px]">
+      <div className="col-span-12 md:col-span-6 space-y-2 md:max-w-[360px]">
         <div className="relative">
           <input
             type="text"
@@ -691,7 +691,7 @@ const StepFour = ({ nextStep }) => {
       </div>
       <div className="col-span-12 md:col-span-6">
         <div className="flex md:justify-end">
-          <div className="space-y-6 w-full md:max-w-[360px] mt-8 md:mt-0">
+          <div className="space-y-2 w-full md:max-w-[360px] mt-8 md:mt-0">
             <div className="relative">
               <input
                 type="text"
